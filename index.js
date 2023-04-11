@@ -7,6 +7,7 @@ const fs = require("fs");
 const multer = require('multer');
 const upload = multer({ dest: './uploads/link' });
 const download = require('image-downloader');
+const PORT = process.env.PORT || 5000 ; 
 
 let collect;
 let collecthotel;
@@ -225,4 +226,4 @@ app.get('/getbooking/:userid', async (req, resp) => {
 
 
 
-app.listen(5000);
+app.listen(PORT);
