@@ -54,6 +54,12 @@ app.post("/login", async (req, resp) => {
     }
 })
 
+app.get("/", (req,resp)=>{
+    resp.json({
+        ok : "all good"
+    });
+})
+
 app.post("/signup", async (req, resp) => {
 
     let r = await collect.find({ mail: req.body.mail }).toArray();
