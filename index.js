@@ -13,10 +13,14 @@ let collect;
 let collecthotel;
 
 (async function connect() {
+    console.log("first");
     collect = await userconnect();
     collecthotel = await hotelconnect();
+    console.log("second");
 })();
 
+
+console.log("third");
 
 const app = express();
 app.use(cors());
@@ -148,6 +152,7 @@ app.get("/hotellist", async (req, resp) => {
 
 app.get("/userbookings/:id", async (req, resp) => {
 
+    collecthotel = await hotelconnect();
     let r = await collecthotel.find({ owner: req.params.id }).toArray();
     resp.json(r);
 })
@@ -226,4 +231,4 @@ app.get('/getbooking/:userid', async (req, resp) => {
 
 
 
-app.listen(PORT);
+app.listen(PORT , ()=>{console.log("server started on port " , PORT)});
