@@ -13,14 +13,10 @@ let collect;
 let collecthotel;
 
 (async function connect() {
-    console.log("first");
     collect = await userconnect();
     collecthotel = await hotelconnect();
-    console.log("second");
 })();
 
-
-console.log("third");
 
 const app = express();
 app.use(cors());
