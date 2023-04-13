@@ -148,6 +148,7 @@ app.post("/addhotel", async (req, resp) => {
 })
 
 app.get("/hotellist", async (req, resp) => {
+    collecthotel = await hotelconnect();
     let r = await collecthotel.find().toArray();
     resp.json(r);
 })
