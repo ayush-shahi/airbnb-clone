@@ -110,7 +110,7 @@ app.post("/uploadfiles", upload.array('mypics', 100), (req, resp) => {
         console.log("oi cunt ", req.files[i]);
         correctpath = path.join(req.files[i].destination, `${Date.now()}${path.extname(req.files[i].originalname)}`);
         fs.renameSync(req.files[i].path, correctpath);
-        uploadedfiles.push("http://127.0.0.1:5000/" + correctpath);
+        uploadedfiles.push(correctpath);
     }
     resp.json({
         ok: true,
