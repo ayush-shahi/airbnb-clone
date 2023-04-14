@@ -108,7 +108,7 @@ app.post("/uploadfiles", upload.array('mypics', 100), (req, resp) => {
 
     for (let i = 0; i < req.files.length; i++) {
         console.log("oi cunt ",i," is ", req.files[i]);
-        correctpath = path.join(req.files[i].destination, `${Date.now()}${path.extname(req.files[i].originalname)}`);
+        correctpath = path.join(req.files[i].destination, `${req.files[i].filename}${path.extname(req.files[i].originalname)}`);
         fs.renameSync(req.files[i].path, correctpath);
         uploadedfiles.push(correctpath);
         console.log("correct path for ",i," is ",correctpath);
