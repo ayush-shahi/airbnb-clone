@@ -107,19 +107,22 @@ app.post("/uploadfiles", upload.array('mypics', 100), (req, resp) => {
     let correctpath = "";
 
     for (let i = 0; i < req.files.length; i++) {
-        console.log("oi cunt ", req.files[i]);
+        console.log("oi cunt ",i," is ", req.files[i]);
         correctpath = path.join(req.files[i].destination, `${Date.now()}${path.extname(req.files[i].originalname)}`);
         fs.renameSync(req.files[i].path, correctpath);
         uploadedfiles.push(correctpath);
+        console.log("correct path for ",i," is ",correctpath);
     }
     resp.json({
         ok: true,
         uploadedfiles: uploadedfiles
     });
+    console.log("all done now " , uploadedfiles);
 });
 
 app.post("/uploadbylink", (req, resp) => {
 
+    console.log("link active");
     let newname = "/uploads/link/" + Date.now() + ".jpg";
     download.image({
         url: req.body.url,
